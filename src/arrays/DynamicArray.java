@@ -117,17 +117,17 @@ public class DynamicArray<T> {
     /**
      * Ensures that the array has enough capacity to hold the specified number of elements.
      *
-     * @param minCapacity the minimum capacity needed
+     * @param expectedMinCapacity the minimum capacity needed
      * Time Complexity: O(n) when resizing
      * Space Complexity: O(n) when resizing
      */
-    private void ensureCapacity(int minCapacity) {
+    private void ensureCapacity(int expectedMinCapacity) {
         if (elements.length == 0) {
-            elements = new Object[Math.max(DEFAULT_CAPACITY, minCapacity)];
+            elements = new Object[Math.max(DEFAULT_CAPACITY, expectedMinCapacity)];
         }
 
-        if (minCapacity > elements.length) {
-            int newCapacity = Math.max(elements.length * GROWTH_FACTOR, minCapacity);
+        if (expectedMinCapacity > elements.length) {
+            int newCapacity = Math.max(elements.length * GROWTH_FACTOR, expectedMinCapacity);
             resize(newCapacity);
         }
     }
